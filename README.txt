@@ -11,3 +11,5 @@ Data is saved in IndexedDB on the device (localStorage fallback if IndexedDB can
 Use the Overview month arrows or month buttons to change months. Tap income rows to enter amounts. Add a recurring bill to repeat from the selected month onward; edit/delete it for one month or from the selected month onward. One-offs apply only to the selected month. Salary, rollover and extra income are manually entered for each month. All calculations use integer pence. Due day is informational only.
 
 For a computer-only local test, run python3 -m http.server 8000 in this folder and open http://localhost:8000. Do not rely on opening index.html as a file for persistent storage or offline installation.
+
+Version 1.1: Adds savings and investments allocations. Existing database and storage keys retained. Export a backup before updating. Replace app files in the same repository and retain the same URL. Reopen online to receive the updated cache. Older app versions may misclassify allocations; do not downgrade without restoring a pre-update backup.
