@@ -1,7 +1,30 @@
-BudgetBuddy v1.2
-Before updating, export your existing budget from Settings to Files/iCloud Drive.
-Upload ALL files in this folder to the root of your existing GitHub Pages repository (replace matching files). Keep the same site URL. Do not clear website data or delete your old home-screen app before verifying your backup.
-After deployment, open the app online. Close/reopen if needed. Settings should show version 1.2. The new update checker is available once 1.2 is loaded. If the old installed app stays cached, use the previously verified backup and reinstall/restore procedure only after verifying the backup.
-Reorder: open Bills or Savings, tap Reorder, drag the grip or use arrows, tap Done. Recurring bill order applies across months; one-off bills and allocation ordering are month-specific. Theme and order are included in backups. Amount fields with zero start blank and treat blank as zero.
-No cloud database. Existing IndexedDB and fallback storage identifiers and backup schema are retained.
-Test status: JavaScript syntax and isolated logic tests passed. Browser navigation blocked in build environment; real-device layout, drag gestures, service worker update and offline behavior not verified.
+BudgetBuddy v1.3
+
+UPGRADE FROM v1.2
+
+1. In your installed app, open Settings and use Back up to Files. Confirm that
+   the dated BudgetBuddy JSON file is in Files or iCloud Drive before updating.
+2. Unzip the release. Upload all files inside budgetbuddy-v1.3 to the existing
+   BudgetBuddy hosting directory, replacing the previous files in one deploy.
+   Keep the same HTTPS address and path. If you upload a folder to your host,
+   select the extracted budgetbuddy-v1.3 folder as the site's root.
+3. Open BudgetBuddy online on your iPhone. In Settings, tap Check for updates.
+   Let it reload, or close and reopen it online if necessary. Confirm that
+   Settings shows version 1.3 and that your entries and appearance are present.
+4. If your budget appears empty, check that you opened the original address
+   and installed app. If you need to recover on a different address or device,
+   open Settings, choose Restore from backup, and select the JSON from step 1.
+   Restoring replaces the budget on that device.
+
+The in-place update uses the existing on-device database and the same JSON
+backup format. There is no need to remove the installed app or clear Safari
+website data. Keep the v1.2 deployment files if you need to roll back.
+
+USING v1.3
+
+Bills shows the selected month's total and its recurring and one-off amounts
+above the list filters. Savings and investments are separate from bills.
+Swipe the month selector or tap an adjacent month. In Bills or Savings,
+tap Reorder and drag a grip or use the arrows. Recurring bill order applies
+across months. One-off and allocation order is specific to the selected month.
+BudgetBuddy displays GBP. Month and reorder transitions respect Reduce Motion.

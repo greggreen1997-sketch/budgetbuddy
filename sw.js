@@ -1,4 +1,4 @@
-const CACHE='budgetbuddy-v1.2';const FILES=['./','./index.html','./style.css?v=1.2','./app.js?v=1.2','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
+const CACHE='budgetbuddy-v1.3';const FILES=['./','./index.html','./style.css?v=1.3','./app.js?v=1.3','./manifest.webmanifest','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil((async()=>{const c=await caches.open(CACHE);await c.addAll(FILES.map(x=>new Request(x,{cache:'reload'})));await self.skipWaiting()})()));
 self.addEventListener('activate',e=>e.waitUntil((async()=>{await Promise.all((await caches.keys()).filter(k=>k.startsWith('budgetbuddy-')&&k!==CACHE).map(k=>caches.delete(k)));await self.clients.claim()})()));
 self.addEventListener('message',e=>{if(e.data==='ACTIVATE')self.skipWaiting()});

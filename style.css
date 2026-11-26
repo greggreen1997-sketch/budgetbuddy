@@ -4,3 +4,44 @@ nav button{width:min(25%,140px)}.top h1{overflow-wrap:anywhere}.top .status{flex
 /* v1.2: solid surfaces, safe areas, compact month picker */
 :root[data-theme=light]{color-scheme:light;--bg:#f2f5f4;--panel:#fff;--line:#dce5e1;--text:#172722;--muted:#596b64;--green:#00855e;--red:#b42335}
 main{padding-top:calc(10px + env(safe-area-inset-top));padding-bottom:calc(76px + env(safe-area-inset-bottom))}.top{margin-bottom:12px}.monthpicker{margin:4px 0 18px;text-align:center}.year{color:var(--muted);font-weight:650;font-size:14px;margin-bottom:5px}.months{display:grid;grid-template-columns:1fr 2.4fr 1fr;gap:0;overflow:visible;touch-action:pan-y;align-items:center}.month{background:transparent;min-width:0;padding:9px 0;white-space:nowrap;color:var(--muted);font-size:14px}.month.active{background:transparent;color:var(--green);font-size:clamp(20px,6vw,27px);letter-spacing:-.6px;position:relative}.month.active:after{content:'';display:block;width:26px;height:3px;background:var(--green);border-radius:3px;margin:6px auto 0}.summary{background:var(--panel)}.row{border-color:var(--line)}.billcard{display:flex;align-items:center;border-bottom:1px solid var(--line);position:relative}.billcard:last-child{border:0}.billcard .row{border:0;flex:1;min-width:0;min-height:58px}.billcard .row:disabled{opacity:1;color:var(--text)}.grip,.move{touch-action:none;flex-shrink:0;color:var(--muted);min-width:30px;padding:0 5px}.grip{font-size:28px;cursor:grab;min-width:42px}.dragging{opacity:.6}.drop-target{outline:2px solid var(--green);outline-offset:-2px}.reorderbar{display:flex;justify-content:space-between;align-items:center;gap:8px}.reorderbar .secondary{color:var(--green);min-height:44px}.themebuttons{display:flex;gap:4px}.themebuttons button{padding:7px 12px;border-radius:8px;min-height:44px}.themebuttons .selected{background:var(--green);color:#fff;font-weight:bold}nav{background:var(--panel);backdrop-filter:none;padding:2px 8px env(safe-area-inset-bottom);z-index:5}nav button{padding:6px 2px 3px;min-height:48px}dialog{background:var(--panel)}input:not([type=file]),select{background:var(--bg);border-color:var(--line)}.secondary{background:var(--bg);border:1px solid var(--line)}:root[data-theme=light] .primary,:root[data-theme=light] .seg .active{color:#fff}#toast{background:var(--panel);border:1px solid var(--line)}
+
+/* Keep every page below the status bar without a translucent overlay. */
+html { background: var(--bg); }
+main { padding-top: calc(18px + env(safe-area-inset-top, 0px)); }
+
+.months {
+  display: block;
+  position: relative;
+  height: 54px;
+  overflow: hidden;
+}
+.month {
+  position: absolute;
+  top: 0;
+  left: calc(50% + var(--slot) * 36%);
+  transform: translateX(-50%);
+  width: 28%;
+  height: 100%;
+  font-size: clamp(20px, 6vw, 27px);
+}
+.month.active { position: absolute; width: 44%; }
+.month span { display: inline-block; transform: scale(.64); }
+.month.active span { transform: none; }
+.month.active::after { position: absolute; bottom: 2px; left: calc(50% - 13px); }
+.month:focus-visible { outline-offset: -3px; }
+.figure { display: inline-block; font-variant-numeric: tabular-nums; }
+
+.panel:has(> .billcard) { position: relative; }
+.billcard.drag-placeholder { opacity: .2; }
+.billcard.drag-preview {
+  position: fixed;
+  z-index: 8;
+  pointer-events: none;
+  background: var(--panel);
+  border: 1px solid var(--green);
+  border-radius: 12px;
+  box-shadow: 0 12px 28px #0005;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .drag-preview { scale: 1.02; }
+}
