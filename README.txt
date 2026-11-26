@@ -1,15 +1,7 @@
-BUDGETBUDDY 1.0
-
-Install / host:
-1. Extract this ZIP. Upload all files inside the folder (including index.html, app.js, style.css, sw.js, manifest.webmanifest and both icons) to a static HTTPS website, such as GitHub Pages.
-2. Open the hosted URL in Safari on your iPhone.
-3. Tap Share, then Add to Home Screen. Open it from the new icon.
-4. Once the initial online load and service-worker installation are complete, the app can operate offline.
-
-Data is saved in IndexedDB on the device (localStorage fallback if IndexedDB cannot open). No accounts or external database. Keep the same website address and use the same installed app to access existing data. Safari and installed web apps may have separate storage. Back up before changing hosting addresses, deleting the app or clearing browser data. The Settings backup action shares or downloads a JSON file; choose Save to Files / iCloud Drive. Restore replaces current data after confirmation. Backups are not encrypted; treat them as private. A backup preparation timestamp does not verify that the file reached iCloud.
-
-Use the Overview month arrows or month buttons to change months. Tap income rows to enter amounts. Add a recurring bill to repeat from the selected month onward; edit/delete it for one month or from the selected month onward. One-offs apply only to the selected month. Salary, rollover and extra income are manually entered for each month. All calculations use integer pence. Due day is informational only.
-
-For a computer-only local test, run python3 -m http.server 8000 in this folder and open http://localhost:8000. Do not rely on opening index.html as a file for persistent storage or offline installation.
-
-Version 1.1: Adds savings and investments allocations. Existing database and storage keys retained. Export a backup before updating. Replace app files in the same repository and retain the same URL. Reopen online to receive the updated cache. Older app versions may misclassify allocations; do not downgrade without restoring a pre-update backup.
+BudgetBuddy v1.2
+Before updating, export your existing budget from Settings to Files/iCloud Drive.
+Upload ALL files in this folder to the root of your existing GitHub Pages repository (replace matching files). Keep the same site URL. Do not clear website data or delete your old home-screen app before verifying your backup.
+After deployment, open the app online. Close/reopen if needed. Settings should show version 1.2. The new update checker is available once 1.2 is loaded. If the old installed app stays cached, use the previously verified backup and reinstall/restore procedure only after verifying the backup.
+Reorder: open Bills or Savings, tap Reorder, drag the grip or use arrows, tap Done. Recurring bill order applies across months; one-off bills and allocation ordering are month-specific. Theme and order are included in backups. Amount fields with zero start blank and treat blank as zero.
+No cloud database. Existing IndexedDB and fallback storage identifiers and backup schema are retained.
+Test status: JavaScript syntax and isolated logic tests passed. Browser navigation blocked in build environment; real-device layout, drag gestures, service worker update and offline behavior not verified.
